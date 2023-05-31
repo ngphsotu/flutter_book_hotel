@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_book_hotel/common/common.dart';
 
-import '../../login/login.dart';
+import '/login/login.dart';
+import '/common/common.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});

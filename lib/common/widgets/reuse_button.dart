@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../value/value.dart';
+
 class ReuseButton extends StatefulWidget {
   final String buttonName;
   final Color? textColor;
@@ -10,7 +12,7 @@ class ReuseButton extends StatefulWidget {
   const ReuseButton({
     super.key,
     this.textColor,
-    this.backgroundColor,
+    this.backgroundColor = AppColors.primaryColor,
     required this.buttonName,
     required this.onPressed,
   });
@@ -33,12 +35,15 @@ class _ReuseButtonState extends State<ReuseButton> {
           foregroundColor: Colors.white,
           backgroundColor: widget.backgroundColor,
           surfaceTintColor: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30.h),
+          ),
         ),
         child: Text(
           widget.buttonName,
           style: TextStyle(
             color: widget.textColor,
-            fontSize: 18.sp,
+            fontSize: 15.sp,
             fontWeight: FontWeight.bold,
           ),
         ),

@@ -24,9 +24,10 @@ class MyApp extends StatelessWidget {
           onGenerateRoute: AppPages.generateRouteSettings,
           title: 'Book Hotel',
           theme: ThemeData(
-            colorScheme:
-                ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
-            useMaterial3: true,
+            scaffoldBackgroundColor: Colors.white,
+            colorScheme: ThemeData()
+                .colorScheme
+                .copyWith(primary: AppColors.primaryColor),
           ),
         ),
       ),

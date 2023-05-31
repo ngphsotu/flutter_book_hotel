@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../common/common.dart';
 import '../register.dart';
+import '/common/common.dart';
 
 // * REGISTER WIDGETS
 
@@ -13,11 +13,9 @@ AppBar appbarRegister() {
   return AppBar(
     elevation: 0,
     backgroundColor: Colors.white,
-    title: const Text(
+    title: Text(
       'Register Account',
-      style: TextStyle(
-        color: AppColors.primaryColor,
-      ),
+      style: TextStyle(color: AppColors.primaryColor, fontSize: 20.sp),
     ),
   );
 }
@@ -66,7 +64,7 @@ Widget formRegister(BuildContext context) {
           hintText: 'Enter your username',
           labelText: 'User',
           autocorrect: false,
-          prefixIcon: const Icon(Icons.person, color: AppColors.primaryColor),
+          prefixIcon: Icon(Icons.person, size: 30.sp),
           keyboardType: TextInputType.multiline,
         ),
         SizedBox(height: 20.h),
@@ -77,7 +75,7 @@ Widget formRegister(BuildContext context) {
           hintText: 'Enter your email',
           labelText: 'Email',
           autocorrect: false,
-          prefixIcon: const Icon(Icons.mail, color: AppColors.primaryColor),
+          prefixIcon: Icon(Icons.mail, size: 30.sp),
           keyboardType: TextInputType.multiline,
         ),
         SizedBox(height: 20.h),
@@ -87,7 +85,7 @@ Widget formRegister(BuildContext context) {
           },
           hintText: 'Enter your password',
           labelText: 'Pass',
-          prefixIcon: const Icon(Icons.security, color: AppColors.primaryColor),
+          prefixIcon: Icon(Icons.security, size: 30.sp),
           autocorrect: false,
           obscureText: true,
           keyboardType: TextInputType.multiline,
@@ -101,8 +99,7 @@ Widget formRegister(BuildContext context) {
           },
           hintText: 'Re-enter your password',
           labelText: 'Confirm Pass',
-          prefixIcon:
-              const Icon(Icons.security_update, color: AppColors.primaryColor),
+          prefixIcon: Icon(Icons.security_update, size: 30.sp),
           autocorrect: false,
           obscureText: true,
           keyboardType: TextInputType.multiline,

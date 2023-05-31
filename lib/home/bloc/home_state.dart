@@ -1,5 +1,11 @@
 part of 'home_bloc.dart';
 
-abstract class HomeState {}
+class HomeState {
+  final int index;
 
-class HomeInitial extends HomeState {}
+  const HomeState({required this.index});
+}
+
+class HomeInitial extends HomeState {
+  HomeInitial({required super.index});
+}

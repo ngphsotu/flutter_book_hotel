@@ -19,17 +19,17 @@ class LoginController {
       if (type == 'email') {
         // BlocProvider.of<SigninBloc>(context).state
         final state = context.read<LoginBloc>().state;
-        String emailAddress = state.email;
-        String password = state.password;
+        String email = state.email;
+        String pass = state.password;
 
-        if (emailAddress.isEmpty) {
+        if (email.isEmpty) {
           if (kDebugMode) {
             print('You need to fill email address - (handleEmailSignIn)');
           }
           toastInfo(msg: 'You need to fill email address');
           return;
         }
-        if (password.isEmpty) {
+        if (pass.isEmpty) {
           if (kDebugMode) {
             print('You need to fill password - (handleEmailSignIn)');
           }
@@ -39,8 +39,8 @@ class LoginController {
         try {
           final credential =
               await FirebaseAuth.instance.signInWithEmailAndPassword(
-            email: emailAddress,
-            password: password,
+            email: email,
+            password: pass,
           );
           if (credential.user == null) {
             if (kDebugMode) {
