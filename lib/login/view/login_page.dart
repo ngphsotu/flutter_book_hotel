@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../login.dart';
+import '/common/common.dart';
 
 class LoginPage extends StatefulWidget implements PreferredSizeWidget {
   const LoginPage({super.key});
@@ -19,7 +20,7 @@ class _LoginPageState extends State<LoginPage> {
     return BlocBuilder<LoginBloc, LoginState>(
       builder: (context, state) {
         return Scaffold(
-          backgroundColor: Colors.white,
+          backgroundColor: AppColors.lightgrey,
           appBar: appbarLogin(),
           body: bodyLogin(context),
         );

@@ -9,50 +9,11 @@ import '/common/common.dart';
 // * Build Appbar Widget in Home Page
 AppBar appbarHome(context, navigator, function) {
   return AppBar(
-    leading: user(),
+    leading: user(navigator),
     elevation: 0,
     centerTitle: true,
     backgroundColor: AppColors.lightgrey,
     actions: [logout(context, navigator, function), SizedBox(width: 10.w)],
-  );
-}
-
-// * Build Body Widget in Home Page
-Widget bodyHome() {
-  return SingleChildScrollView(
-    child: Column(
-      children: [
-        search(),
-        infofindroom(),
-        Container(
-          margin: EdgeInsets.only(top: 20.h),
-          child: ReuseButton(
-            buttonName: 'Search for'.toUpperCase(),
-            onPressed: () {
-              if (kDebugMode) {
-                print('Press Search For Button');
-              }
-            },
-          ),
-        )
-      ],
-    ),
-  );
-}
-
-// * Build User Widget in Home Page
-Widget user() {
-  return GestureDetector(
-    onTap: () {
-      if (kDebugMode) {
-        print('Tap Profile User');
-      }
-    },
-    child: Icon(
-      Icons.person,
-      size: 40.sp,
-      color: AppColors.primaryColor,
-    ),
   );
 }
 
@@ -94,6 +55,32 @@ Widget logout(
   );
 }
 
+// * Build Body Widget in Home Page
+Widget bodyHome() {
+  return SingleChildScrollView(
+    child: Column(
+      children: [search(), infofindroom(), searchButton()],
+    ),
+  );
+}
+
+// * Build User Widget in Home Page
+Widget user(NavigatorState navigator) {
+  return GestureDetector(
+    onTap: () {
+      navigator.pushNamed(AppRoutes.PROFILE);
+      if (kDebugMode) {
+        print('Tap Profile User');
+      }
+    },
+    child: Icon(
+      Icons.account_circle,
+      size: 40.sp,
+      color: AppColors.primaryColor,
+    ),
+  );
+}
+
 // * Build Search Widget in Home Page
 Widget search() {
   return Container(
@@ -125,12 +112,14 @@ Widget infofindroom() {
           ReuseTextFormField(
             filled: true,
             hintText: 'Where is Your Location ?',
-            prefixIcon: Icon(Icons.room, size: 30.sp),
+            prefixIcon: Icon(Icons.location_pin, size: 30.sp),
+            suffixIcon: Icon(Icons.arrow_drop_down, size: 30.sp),
           ),
           SizedBox(height: 10.h),
           ReuseTextFormField(
             filled: true,
-            hintText: 'Check In - Check Out',
+            // hintText: 'Check In - Check Out',
+            labelText: 'Check In - Check Out',
             prefixIcon: Icon(Icons.calendar_today, size: 30.sp),
           ),
           SizedBox(height: 10.h),
@@ -138,21 +127,39 @@ Widget infofindroom() {
             filled: true,
             hintText: 'How many rooms ?',
             prefixIcon: Icon(Icons.home_work, size: 30.sp),
+            suffixIcon: Icon(Icons.arrow_drop_down, size: 30.sp),
           ),
           SizedBox(height: 10.h),
           ReuseTextFormField(
             filled: true,
             hintText: 'How many adults ?',
             prefixIcon: Icon(Icons.people, size: 30.sp),
+            suffixIcon: Icon(Icons.arrow_drop_down, size: 30.sp),
           ),
           SizedBox(height: 10.h),
           ReuseTextFormField(
             filled: true,
             hintText: 'How many child?',
             prefixIcon: Icon(Icons.child_care, size: 30.sp),
+            suffixIcon: Icon(Icons.arrow_drop_down, size: 30.sp),
           ),
         ],
       ),
+    ),
+  );
+}
+
+// * Build Search Button Widget in Home Page
+Widget searchButton() {
+  return Container(
+    margin: EdgeInsets.only(top: 20.h),
+    child: ReuseButton(
+      buttonName: 'Search for'.toUpperCase(),
+      onPressed: () {
+        if (kDebugMode) {
+          print('Press Search For Button');
+        }
+      },
     ),
   );
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../profile/profile.dart';
 import '/global.dart';
 import '../common.dart';
 import '/home/home.dart';
@@ -40,6 +41,11 @@ class AppPages {
         route: AppRoutes.HOME,
         page: const HomePage(),
         bloc: BlocProvider(create: (_) => HomeBloc()),
+      ),
+      PageEntity(
+        route: AppRoutes.PROFILE,
+        page: const ProfilePage(),
+        bloc: BlocProvider(create: (_) => ProfileBloc()),
       ),
     ];
   }

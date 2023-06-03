@@ -9,14 +9,24 @@ import '/common/common.dart';
 // * REGISTER WIDGETS
 
 // * Build Appbar Widget in Register Page
-AppBar appbarRegister() {
+AppBar appbarRegister(BuildContext context) {
   return AppBar(
-    elevation: 0,
-    backgroundColor: Colors.white,
-    title: Text(
-      'Register Account',
-      style: TextStyle(color: AppColors.primaryColor, fontSize: 20.sp),
+    title: ReuseText(
+      text: 'Register Account',
+      color: AppColors.primaryColor,
+      fontSize: 20.sp,
     ),
+    leading: GestureDetector(
+      onTap: () {
+        Navigator.pop(context);
+      },
+      child: const Icon(
+        Icons.arrow_back_ios_new,
+        color: AppColors.primaryColor,
+      ),
+    ),
+    elevation: 0,
+    backgroundColor: AppColors.lightgrey,
   );
 }
 
@@ -38,14 +48,12 @@ Widget textRegister() {
   return Center(
     child: Container(
       margin: EdgeInsets.only(top: 50.h, bottom: 50.h),
-      child: Text(
-        'Booking Hotels',
-        style: TextStyle(
-          color: AppColors.primaryColor,
-          fontSize: 40.sp,
-          fontWeight: FontWeight.bold,
-          letterSpacing: 2,
-        ),
+      child: ReuseText(
+        text: 'Booking Hotels',
+        color: AppColors.primaryColor,
+        fontSize: 40.sp,
+        fontWeight: FontWeight.bold,
+        letterSpacing: 2,
       ),
     ),
   );
@@ -61,8 +69,10 @@ Widget formRegister(BuildContext context) {
           onChanged: (value) {
             context.read<RegisterBloc>().add(UsernameEvent(username: value));
           },
+          filled: true,
           hintText: 'Enter your username',
           labelText: 'User',
+          fillColor: Colors.white,
           autocorrect: false,
           prefixIcon: Icon(Icons.person, size: 30.sp),
           keyboardType: TextInputType.multiline,
@@ -72,8 +82,10 @@ Widget formRegister(BuildContext context) {
           onChanged: (value) {
             context.read<RegisterBloc>().add(EmailEvent(email: value));
           },
+          filled: true,
           hintText: 'Enter your email',
           labelText: 'Email',
+          fillColor: Colors.white,
           autocorrect: false,
           prefixIcon: Icon(Icons.mail, size: 30.sp),
           keyboardType: TextInputType.multiline,
@@ -83,8 +95,10 @@ Widget formRegister(BuildContext context) {
           onChanged: (value) {
             context.read<RegisterBloc>().add(PasswordEvent(password: value));
           },
+          filled: true,
           hintText: 'Enter your password',
           labelText: 'Pass',
+          fillColor: Colors.white,
           prefixIcon: Icon(Icons.security, size: 30.sp),
           autocorrect: false,
           obscureText: true,
@@ -97,8 +111,10 @@ Widget formRegister(BuildContext context) {
                 .read<RegisterBloc>()
                 .add(RePasswordEvent(repassword: value));
           },
+          filled: true,
           hintText: 'Re-enter your password',
           labelText: 'Confirm Pass',
+          fillColor: Colors.white,
           prefixIcon: Icon(Icons.security_update, size: 30.sp),
           autocorrect: false,
           obscureText: true,

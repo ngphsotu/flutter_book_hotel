@@ -10,10 +10,7 @@ import '/common/common.dart';
 
 // * Build Appbar Widget in Login Page
 AppBar appbarLogin() {
-  return AppBar(
-    elevation: 0,
-    backgroundColor: Colors.white,
-  );
+  return AppBar(elevation: 0, backgroundColor: AppColors.lightgrey);
 }
 
 // * Build Body Widget in Login Page
@@ -34,14 +31,12 @@ Widget textLogin() {
   return Center(
     child: Container(
       margin: EdgeInsets.only(top: 100.h, bottom: 100.h),
-      child: Text(
-        'Booking Hotels',
-        style: TextStyle(
-          color: AppColors.primaryColor,
-          fontSize: 40.sp,
-          fontWeight: FontWeight.bold,
-          letterSpacing: 2,
-        ),
+      child: ReuseText(
+        text: 'Booking Hotels',
+        color: AppColors.primaryColor,
+        fontSize: 40.sp,
+        fontWeight: FontWeight.bold,
+        letterSpacing: 2,
       ),
     ),
   );
@@ -57,10 +52,12 @@ Widget formLogin(BuildContext context) {
           onChanged: (value) {
             context.read<LoginBloc>().add(EmailEvent(email: value));
           },
+          filled: true,
           hintText: 'Enter your email',
           labelText: 'Email',
-          autocorrect: false,
+          fillColor: Colors.white,
           prefixIcon: Icon(Icons.person, size: 30.sp),
+          autocorrect: false,
           keyboardType: TextInputType.multiline,
         ),
         SizedBox(height: 20.h),
@@ -68,8 +65,10 @@ Widget formLogin(BuildContext context) {
           onChanged: (value) {
             context.read<LoginBloc>().add(PasswordEvent(password: value));
           },
+          filled: true,
           hintText: 'Enter your password',
           labelText: 'Pass',
+          fillColor: Colors.white,
           prefixIcon: Icon(Icons.security, size: 30.sp),
           autocorrect: false,
           obscureText: true,

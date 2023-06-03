@@ -14,6 +14,7 @@ class ReuseTextFormField extends StatefulWidget {
   final Widget? suffixIcon;
   final TextInputType? keyboardType;
   final Function(String value)? onChanged;
+  final TextEditingController? controller;
 
   const ReuseTextFormField({
     super.key,
@@ -28,6 +29,7 @@ class ReuseTextFormField extends StatefulWidget {
     this.onChanged,
     this.fillColor = AppColors.lightgrey,
     this.filled = false,
+    this.controller,
   });
 
   @override
@@ -40,6 +42,7 @@ class _ReuseTextFormFieldState extends State<ReuseTextFormField> {
     return TextFormField(
       maxLines: widget.maxLines,
       onChanged: (value) => widget.onChanged!(value),
+      controller: widget.controller,
       obscureText: widget.obscureText,
       keyboardType: widget.keyboardType,
       decoration: InputDecoration(
