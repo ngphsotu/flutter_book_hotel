@@ -10,7 +10,9 @@ import '/common/common.dart';
 class LoginController {
   final BuildContext context;
 
-  const LoginController({required this.context});
+  final _firebaseAuth = FirebaseAuth.instance;
+
+  LoginController({required this.context});
 
   // * Handle Email SignIn in SignIn Controller
   Future<void> handleEmailSignIn(String type) async {
@@ -37,8 +39,7 @@ class LoginController {
           return;
         }
         try {
-          final credential =
-              await FirebaseAuth.instance.signInWithEmailAndPassword(
+          final credential = await _firebaseAuth.signInWithEmailAndPassword(
             email: email,
             password: pass,
           );

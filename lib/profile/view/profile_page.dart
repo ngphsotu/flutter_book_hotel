@@ -17,7 +17,7 @@ class _ProfilePageState extends State<ProfilePage> {
     return BlocBuilder<ProfileBloc, ProfileState>(
       builder: (context, state) {
         return Scaffold(
-          backgroundColor: AppColors.primaryColor,
+          backgroundColor: AppColors.primary,
           appBar: appbarProfile(context),
           body: bodyProfile(),
         );

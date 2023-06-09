@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '/login/login.dart';
+import '../../global.dart';
 import '/common/common.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -22,8 +22,10 @@ class _WelcomePageState extends State<WelcomePage> {
           ),
           ReuseButton(
             onPressed: () {
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => const LoginPage()));
+              Global.storageService
+                  .setBool(AppConstants.STORAGE_DEVICE_OPEN_FIRST_TIME, true);
+              Navigator.of(context)
+                  .pushNamedAndRemoveUntil(AppRoutes.LOGIN, (route) => false);
             },
             buttonName: 'Next',
             textColor: Colors.black,

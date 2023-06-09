@@ -8,6 +8,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   RegisterBloc() : super(const RegisterState()) {
     on<RegisterEvent>((event, emit) {});
     on<UsernameEvent>(_usernameEvent);
+    on<PhoneEvent>(_phoneEvent);
     on<EmailEvent>(_emailEvent);
     on<PasswordEvent>(_passwordEvent);
     on<RePasswordEvent>(_repasswordEvent);
@@ -17,6 +18,13 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     emit(state.copyWith(username: event.username));
     if (kDebugMode) {
       print('Username: ${event.username} - (_usernameEvent)');
+    }
+  }
+
+  void _phoneEvent(PhoneEvent event, Emitter<RegisterState> emit) {
+    emit(state.copyWith(phone: event.phone));
+    if (kDebugMode) {
+      print('Phone: ${event.phone} - (_phoneEvent)');
     }
   }
 

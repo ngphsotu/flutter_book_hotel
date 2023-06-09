@@ -10,6 +10,12 @@ class UsernameEvent extends RegisterEvent {
   const UsernameEvent({required this.username});
 }
 
+class PhoneEvent extends RegisterEvent {
+  final String phone;
+
+  const PhoneEvent({required this.phone});
+}
+
 class EmailEvent extends RegisterEvent {
   final String email;
 

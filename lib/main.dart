@@ -12,7 +12,6 @@ Future<void> main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -25,9 +24,8 @@ class MyApp extends StatelessWidget {
           title: 'Book Hotel',
           theme: ThemeData(
             scaffoldBackgroundColor: Colors.white,
-            colorScheme: ThemeData()
-                .colorScheme
-                .copyWith(primary: AppColors.primaryColor),
+            colorScheme:
+                ThemeData().colorScheme.copyWith(primary: AppColors.primary),
           ),
         ),
       ),

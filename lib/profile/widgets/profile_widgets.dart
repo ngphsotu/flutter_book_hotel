@@ -11,7 +11,7 @@ AppBar appbarProfile(context) {
   return AppBar(
     title: Text(
       'Profile',
-      style: TextStyle(color: AppColors.lightgrey, fontSize: 20.sp),
+      style: TextStyle(color: AppColors.bg, fontSize: 20.sp),
     ),
     leading: GestureDetector(
       onTap: () {
@@ -19,11 +19,11 @@ AppBar appbarProfile(context) {
       },
       child: const Icon(
         Icons.arrow_back_ios_new,
-        color: AppColors.lightgrey,
+        color: AppColors.bg,
       ),
     ),
     elevation: 0,
-    backgroundColor: AppColors.primaryColor,
+    backgroundColor: AppColors.primary,
   );
 }
 
@@ -34,7 +34,7 @@ Widget bodyProfile() {
     height: 600.h,
     margin: EdgeInsets.only(top: 150.h),
     decoration: BoxDecoration(
-      color: AppColors.lightgrey,
+      color: AppColors.bg,
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(30.h),
         topRight: Radius.circular(30.h),

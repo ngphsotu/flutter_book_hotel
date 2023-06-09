@@ -13,7 +13,7 @@ AppBar appbarRegister(BuildContext context) {
   return AppBar(
     title: ReuseText(
       text: 'Register Account',
-      color: AppColors.primaryColor,
+      color: AppColors.primary,
       fontSize: 20.sp,
     ),
     leading: GestureDetector(
@@ -22,11 +22,11 @@ AppBar appbarRegister(BuildContext context) {
       },
       child: const Icon(
         Icons.arrow_back_ios_new,
-        color: AppColors.primaryColor,
+        color: AppColors.primary,
       ),
     ),
     elevation: 0,
-    backgroundColor: AppColors.lightgrey,
+    backgroundColor: AppColors.bg,
   );
 }
 
@@ -50,7 +50,7 @@ Widget textRegister() {
       margin: EdgeInsets.only(top: 50.h, bottom: 50.h),
       child: ReuseText(
         text: 'Booking Hotels',
-        color: AppColors.primaryColor,
+        color: AppColors.primary,
         fontSize: 40.sp,
         fontWeight: FontWeight.bold,
         letterSpacing: 2,
@@ -76,6 +76,19 @@ Widget formRegister(BuildContext context) {
           autocorrect: false,
           prefixIcon: Icon(Icons.person, size: 30.sp),
           keyboardType: TextInputType.multiline,
+        ),
+        SizedBox(height: 20.h),
+        ReuseTextFormField(
+          onChanged: (value) {
+            context.read<RegisterBloc>().add(PhoneEvent(phone: value));
+          },
+          filled: true,
+          hintText: 'Enter your phone',
+          labelText: 'Phone',
+          fillColor: Colors.white,
+          prefixIcon: Icon(Icons.phone, size: 30.sp),
+          autocorrect: false,
+          keyboardType: TextInputType.phone,
         ),
         SizedBox(height: 20.h),
         ReuseTextFormField(

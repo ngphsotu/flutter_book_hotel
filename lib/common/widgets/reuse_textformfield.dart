@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_book_hotel/common/value/color.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '/common/common.dart';
 
 class ReuseTextFormField extends StatefulWidget {
   final int? maxLines;
@@ -13,23 +14,25 @@ class ReuseTextFormField extends StatefulWidget {
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final TextInputType? keyboardType;
+  final Function()? onTap;
   final Function(String value)? onChanged;
   final TextEditingController? controller;
 
   const ReuseTextFormField({
     super.key,
-    this.maxLines = 1,
-    this.autocorrect = true,
-    this.obscureText = false,
+    this.onTap,
     this.hintText,
     this.labelText,
+    this.onChanged,
+    this.controller,
     this.prefixIcon,
     this.suffixIcon,
     this.keyboardType,
-    this.onChanged,
-    this.fillColor = AppColors.lightgrey,
     this.filled = false,
-    this.controller,
+    this.maxLines = 1,
+    this.fillColor = AppColors.bg,
+    this.autocorrect = true,
+    this.obscureText = false,
   });
 
   @override
@@ -40,6 +43,7 @@ class _ReuseTextFormFieldState extends State<ReuseTextFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onTap: widget.onTap,
       maxLines: widget.maxLines,
       onChanged: (value) => widget.onChanged!(value),
       controller: widget.controller,

@@ -17,7 +17,7 @@ class _RegisterPageState extends State<RegisterPage> {
     return BlocBuilder<RegisterBloc, RegisterState>(
       builder: (context, state) {
         return Scaffold(
-          backgroundColor: AppColors.lightgrey,
+          backgroundColor: AppColors.bg,
           appBar: appbarRegister(context),
           body: bodyRegister(context),
         );

@@ -20,7 +20,7 @@ class _LoginPageState extends State<LoginPage> {
     return BlocBuilder<LoginBloc, LoginState>(
       builder: (context, state) {
         return Scaffold(
-          backgroundColor: AppColors.lightgrey,
+          backgroundColor: AppColors.bg,
           appBar: appbarLogin(),
           body: bodyLogin(context),
         );

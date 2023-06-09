@@ -15,4 +15,16 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       print('My tapped index: ${event.index}');
     }
   }
+
+  //   void getAccount() async {
+  //   try {
+  //     FireAuth().getUserByUID(
+  //       (Account val) {
+  //         accountStream.add(val);
+  //       },
+  //     );
+  //   } catch (e) {
+  //     FlutterToast().showToast(e.toString());
+  //   }
+  // }
 }

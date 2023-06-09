@@ -14,6 +14,6 @@ toastInfo({
     textColor: textColor,
     toastLength: Toast.LENGTH_SHORT,
     backgroundColor: backgroundColor,
-    timeInSecForIosWeb: 2,
+    timeInSecForIosWeb: 1,
   );
 }

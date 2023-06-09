@@ -10,7 +10,7 @@ import '/common/common.dart';
 
 // * Build Appbar Widget in Login Page
 AppBar appbarLogin() {
-  return AppBar(elevation: 0, backgroundColor: AppColors.lightgrey);
+  return AppBar(elevation: 0, backgroundColor: AppColors.bg);
 }
 
 // * Build Body Widget in Login Page
@@ -33,7 +33,7 @@ Widget textLogin() {
       margin: EdgeInsets.only(top: 100.h, bottom: 100.h),
       child: ReuseText(
         text: 'Booking Hotels',
-        color: AppColors.primaryColor,
+        color: AppColors.primary,
         fontSize: 40.sp,
         fontWeight: FontWeight.bold,
         letterSpacing: 2,
@@ -89,14 +89,14 @@ Widget buttonLogin(context) {
         Container(
           margin: EdgeInsets.only(top: 100.h),
           child: ReuseButton(
+            textColor: Colors.white,
+            buttonName: 'Login',
             onPressed: () {
               LoginController(context: context).handleEmailSignIn('email');
               if (kDebugMode) {
                 print('Press Login Button');
               }
             },
-            textColor: Colors.white,
-            buttonName: 'Login',
           ),
         ),
         Container(
@@ -113,15 +113,15 @@ Widget buttonLogin(context) {
         Container(
           margin: EdgeInsets.only(top: 0.h),
           child: ReuseButton(
+            textColor: Colors.grey,
+            buttonName: 'Register',
+            backgroundColor: Colors.white,
             onPressed: () {
               navigator.pushNamed(AppRoutes.REGISTER);
               if (kDebugMode) {
                 print('Press Register Button');
               }
             },
-            textColor: Colors.grey[500],
-            buttonName: 'Register',
-            backgroundColor: Colors.white,
           ),
         ),
       ],

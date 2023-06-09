@@ -12,7 +12,7 @@ AppBar appbarHome(context, navigator, function) {
     leading: user(navigator),
     elevation: 0,
     centerTitle: true,
-    backgroundColor: AppColors.lightgrey,
+    backgroundColor: AppColors.bg,
     actions: [logout(context, navigator, function), SizedBox(width: 10.w)],
   );
 }
@@ -51,16 +51,7 @@ Widget logout(
         },
       );
     },
-    child: Icon(Icons.logout, size: 40.sp, color: AppColors.primaryColor),
-  );
-}
-
-// * Build Body Widget in Home Page
-Widget bodyHome() {
-  return SingleChildScrollView(
-    child: Column(
-      children: [search(), infofindroom(), searchButton()],
-    ),
+    child: Icon(Icons.logout, size: 40.sp, color: AppColors.primary),
   );
 }
 
@@ -76,7 +67,7 @@ Widget user(NavigatorState navigator) {
     child: Icon(
       Icons.account_circle,
       size: 40.sp,
-      color: AppColors.primaryColor,
+      color: AppColors.primary,
     ),
   );
 }
@@ -95,65 +86,12 @@ Widget search() {
   );
 }
 
-// * Build Info Room Widget in Home Page
-Widget infofindroom() {
-  return Container(
-    width: double.infinity,
-    height: 342.h,
-    margin: EdgeInsets.only(top: 200.h, left: 20.w, right: 20.w),
-    decoration: BoxDecoration(
-      color: Colors.white,
-      borderRadius: BorderRadius.circular(10.h),
-    ),
-    child: Container(
-      margin: EdgeInsets.only(top: 10.h, left: 10.w, right: 10.w, bottom: 10.h),
-      child: Column(
-        children: [
-          ReuseTextFormField(
-            filled: true,
-            hintText: 'Where is Your Location ?',
-            prefixIcon: Icon(Icons.location_pin, size: 30.sp),
-            suffixIcon: Icon(Icons.arrow_drop_down, size: 30.sp),
-          ),
-          SizedBox(height: 10.h),
-          ReuseTextFormField(
-            filled: true,
-            // hintText: 'Check In - Check Out',
-            labelText: 'Check In - Check Out',
-            prefixIcon: Icon(Icons.calendar_today, size: 30.sp),
-          ),
-          SizedBox(height: 10.h),
-          ReuseTextFormField(
-            filled: true,
-            hintText: 'How many rooms ?',
-            prefixIcon: Icon(Icons.home_work, size: 30.sp),
-            suffixIcon: Icon(Icons.arrow_drop_down, size: 30.sp),
-          ),
-          SizedBox(height: 10.h),
-          ReuseTextFormField(
-            filled: true,
-            hintText: 'How many adults ?',
-            prefixIcon: Icon(Icons.people, size: 30.sp),
-            suffixIcon: Icon(Icons.arrow_drop_down, size: 30.sp),
-          ),
-          SizedBox(height: 10.h),
-          ReuseTextFormField(
-            filled: true,
-            hintText: 'How many child?',
-            prefixIcon: Icon(Icons.child_care, size: 30.sp),
-            suffixIcon: Icon(Icons.arrow_drop_down, size: 30.sp),
-          ),
-        ],
-      ),
-    ),
-  );
-}
-
 // * Build Search Button Widget in Home Page
 Widget searchButton() {
   return Container(
     margin: EdgeInsets.only(top: 20.h),
     child: ReuseButton(
+      textColor: Colors.white,
       buttonName: 'Search for'.toUpperCase(),
       onPressed: () {
         if (kDebugMode) {
