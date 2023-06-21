@@ -17,6 +17,7 @@ class ReuseTextFormField extends StatefulWidget {
   final Function()? onTap;
   final Function(String value)? onChanged;
   final TextEditingController? controller;
+  final Function? funcValidation;
 
   const ReuseTextFormField({
     super.key,
@@ -28,6 +29,7 @@ class ReuseTextFormField extends StatefulWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.keyboardType,
+    this.funcValidation,
     this.filled = false,
     this.maxLines = 1,
     this.fillColor = AppColors.bg,

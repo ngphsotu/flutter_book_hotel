@@ -9,3 +9,8 @@ class TriggerHomeEvent extends HomeEvent {
 
   const TriggerHomeEvent({required this.index}) : super();
 }
+
+class DateEvent extends HomeEvent {
+  final String pickDate;
+  const DateEvent({required this.pickDate});
+}

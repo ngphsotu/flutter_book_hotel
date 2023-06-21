@@ -9,7 +9,6 @@ import '/common/common.dart';
 
 class LoginController {
   final BuildContext context;
-
   final _firebaseAuth = FirebaseAuth.instance;
 
   LoginController({required this.context});
@@ -17,45 +16,53 @@ class LoginController {
   // * Handle Email SignIn in SignIn Controller
   Future<void> handleEmailSignIn(String type) async {
     final navigator = Navigator.of(context);
+
     try {
       if (type == 'email') {
-        // BlocProvider.of<SigninBloc>(context).state
         final state = context.read<LoginBloc>().state;
-        String email = state.email;
-        String pass = state.password;
+        final String email = state.email;
+        final String pass = state.password;
 
         if (email.isEmpty) {
+          toastInfo(msg: 'You need to fill email address');
           if (kDebugMode) {
             print('You need to fill email address - (handleEmailSignIn)');
           }
-          toastInfo(msg: 'You need to fill email address');
           return;
         }
+
         if (pass.isEmpty) {
+          toastInfo(msg: 'You need to fill password');
           if (kDebugMode) {
             print('You need to fill password - (handleEmailSignIn)');
           }
-          toastInfo(msg: 'You need to fill password');
+          return;
+        } else if (pass.isNotEmpty && pass.length < 6) {
+          toastInfo(msg: 'Your password is too weak');
+          if (kDebugMode) {
+            print('Your password is too weak');
+          }
           return;
         }
+
         try {
           final credential = await _firebaseAuth.signInWithEmailAndPassword(
             email: email,
             password: pass,
           );
           if (credential.user == null) {
+            toastInfo(msg: 'You don\'t exist');
             if (kDebugMode) {
               print('User does not exist - (handleEmailSignIn)');
             }
-            toastInfo(msg: 'You don\'t exist');
             return;
           }
           if (!credential.user!.emailVerified) {
+            toastInfo(msg: 'You need to verify your email account');
             if (kDebugMode) {
               print(
                   'You need to verify your email account - (handleEmailSignIn)');
             }
-            toastInfo(msg: 'You need to verify your email account');
             return;
           }
 
@@ -69,10 +76,10 @@ class LoginController {
             navigator.pushNamedAndRemoveUntil(AppRoutes.HOME, (route) => false);
             // Verified user from firebase
           } else {
-            toastInfo(msg: 'Currently you\'re not a user of this app');
+            toastInfo(msg: 'Currently you are not a user of this app');
             if (kDebugMode) {
               print(
-                  'Currently you\'re not a user of this app - (handleEmailSignIn)');
+                  'Currently you are not a user of this app - (handleEmailSignIn)');
             }
             return;
             // Error gettting user from firebase

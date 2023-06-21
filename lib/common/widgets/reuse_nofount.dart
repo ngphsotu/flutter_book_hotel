@@ -3,10 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../common.dart';
 
-class NoFoundWidget extends StatelessWidget {
+class NoFound extends StatelessWidget {
   final String title;
 
-  const NoFoundWidget({super.key, required this.title});
+  const NoFound({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {

@@ -90,6 +90,30 @@ Widget formRegister(BuildContext context) {
           autocorrect: false,
           keyboardType: TextInputType.phone,
         ),
+        // IntlPhoneField(
+        //   decoration: InputDecoration(
+        //     labelText: 'Phone',
+        //     hintText: 'Enter your phone',
+        //     border: OutlineInputBorder(
+        //       borderSide: const BorderSide(color: Colors.grey),
+        //       borderRadius: BorderRadius.circular(10.h),
+        //     ),
+        //     focusedBorder: OutlineInputBorder(
+        //       borderSide: const BorderSide(color: Colors.grey),
+        //       borderRadius: BorderRadius.circular(10.h),
+        //     ),
+        //     errorBorder: OutlineInputBorder(
+        //       borderSide: const BorderSide(color: Colors.grey),
+        //       borderRadius: BorderRadius.circular(10.h),
+        //     ),
+        //   ),
+        //   initialCountryCode: 'VN',
+        //   onChanged: (phone) {
+        //     if (kDebugMode) {
+        //       print(phone.completeNumber);
+        //     }
+        //   },
+        // ),
         SizedBox(height: 20.h),
         ReuseTextFormField(
           onChanged: (value) {

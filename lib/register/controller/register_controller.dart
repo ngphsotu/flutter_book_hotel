@@ -8,8 +8,8 @@ import '/common/common.dart';
 
 class RegisterController {
   final BuildContext context;
-
-  const RegisterController({required this.context});
+  final _firebaseAuth = FirebaseAuth.instance;
+  RegisterController({required this.context});
 
   // * Handle Email SignUp in SignUp Controller
   Future<void> handleEmailSignUp() async {
@@ -18,12 +18,12 @@ class RegisterController {
 
     String username = state.username;
     String email = state.email;
-    String password = state.password;
-    String repassword = state.repassword;
+    String pass = state.password;
+    String repass = state.repassword;
 
     if (username.isEmpty) {
       if (kDebugMode) {
-        print('Username can not be empty - (handleEmailSignUp)');
+        print('Username can\'t be empty - (handleEmailSignUp)');
       }
       toastInfo(msg: 'Username can not be empty');
       return;
@@ -31,30 +31,43 @@ class RegisterController {
 
     if (email.isEmpty) {
       if (kDebugMode) {
-        print('Email can not be empty - (handleEmailSignUp)');
+        print('Email can\'t be empty - (handleEmailSignUp)');
       }
       toastInfo(msg: 'Email can not be empty');
       return;
     }
 
-    if (password.isEmpty) {
+    if (pass.isEmpty) {
       if (kDebugMode) {
-        print('Password can not be empty - (handleEmailSignUp)');
+        print('Password can\'t be empty - (handleEmailSignUp)');
       }
-      toastInfo(msg: 'Password can not be empty');
+      toastInfo(msg: 'Password can\'t be empty');
+      return;
+    } else if (pass.isNotEmpty && pass.length < 6) {
+      if (kDebugMode) {
+        print('Your password isn\'t strong enough');
+      }
+      toastInfo(msg: 'Your password isn\'t strong enough');
       return;
     }
 
-    if (repassword.isEmpty) {
+    if (repass.isEmpty) {
       if (kDebugMode) {
         print('Your password confirmation is wrong - (handleEmailSignUp)');
       }
       toastInfo(msg: 'Your password confirmation is wrong');
       return;
+    } else if (repass != pass) {
+      if (kDebugMode) {
+        print('Repassword don\'t match password');
+      }
+      toastInfo(msg: 'Repassword don\'t match password');
+      return;
     }
+
     try {
-      final credential = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: email, password: password);
+      final credential = await _firebaseAuth.createUserWithEmailAndPassword(
+          email: email, password: pass);
 
       if (credential.user != null) {
         await credential.user?.sendEmailVerification();
